@@ -1,0 +1,29 @@
+<style>
+    #el {
+        width: 100px;
+        height: 100px;
+        background-color: red;
+    }
+</style>
+<html>
+<body>
+    <div>
+        <div id=el>
+
+        </div>
+    </div>
+</body>
+</html>
+
+<script type="module">
+    import {Timeline,Animation} from './animate.js'
+
+    let el = document.querySelector("#el")
+    let tl = new Timeline()
+
+    let animate = new Animation(el.style,"transform",v => `translateX(${v}px)`,0,200,5000)
+
+    tl.add(animate)
+
+    tl.start()
+</script>

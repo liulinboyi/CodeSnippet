@@ -1,0 +1,64 @@
+<style>
+    #el {
+        width: 100px;
+        height: 100px;
+        background-color: red;
+        transform: translate3d(0, 0, 0);
+    }
+
+    #el2 {
+        width: 100px;
+        height: 100px;
+        background-color: red;
+        /* transition: transform linear 5s; */
+    }
+</style>
+<html>
+<body>
+    <div>
+        <div id=el></div>
+        <div id=el2></div>
+        <button id=stop>停止</button>
+        <button id=continue>继续</button>
+        <button id=add>添加</button>
+    </div>
+</body>
+</html>
+
+<script type="module">
+    import {Timeline,Animation,ColorAnimation} from './animate.js'
+    import {cubicBezier} from './cubicBezier.js'
+
+    let linear = v => v
+    let ease = cubicBezier(.25,.1,.25,1)
+
+    let el = document.querySelector("#el")
+    let el2 = document.querySelector("#el2")
+    let tl = new Timeline()
+
+    // let animate = new Animation(el.style,"transform",v => `translateX(${v}px)`,0,200,5000,2000,linear)
+    let animate = new Animation(el.style,"transform",v => `translate3d(${v}px,0,0)`,0,500,10000,0,linear)
+    let colorAnimate = new ColorAnimation(el.style,"background",undefined,{r: 0,g:0,b:0,a: 1},{r: 255,g:0,b:0,a: 1},10000,0,linear)
+    let opacityAnimate = new Animation(el.style,"opacity",v => `${v}`,0,0.5,10000,0,linear)
+    
+    tl.add(animate)
+    tl.add(colorAnimate)
+    tl.add(opacityAnimate)
+
+    tl.start()
+    document.querySelector("#stop").addEventListener("click",() => {
+        tl.pause()
+    })
+    document.querySelector("#continue").addEventListener("click",() => {
+        tl.resume()
+    })
+    document.querySelector("#add").addEventListener("click", () => {
+        let animate = new Animation(el2.style,"transform",v => `translate3d(${v}px,0,0)`,0,500,10000,0,linear)
+        // tl.add(animate)
+        tl.add(animate,0)
+    })
+    // window.onload = () => {
+    //     tl.start()
+    // }
+    // document.querySelector("#el2").style.transform = "translateX(200px)"
+</script>
