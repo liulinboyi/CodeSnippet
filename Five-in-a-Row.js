@@ -331,7 +331,7 @@ export class Chees {
                                 machineScore[i][j] += 420
                             } else if (Chees.machineWin[k] === 3) {
                                 // 这时，第k中赢法，已经落了三颗白子，这时进行拦截，收益更大
-                                machineScore[i][j] += 2200
+                                machineScore[i][j] += 2100
                             } else if (Chees.machineWin[k] === 4) {
                                 // 这时，第k中赢法，已经落了四颗白子，这时进行拦截，收益更大
                                 machineScore[i][j] += 20000
@@ -459,7 +459,7 @@ export class Chees {
                                 machineScore[i][j] += 420
                             } else if (Chees.machineWin[k] === 3) {
                                 // 这时，第k中赢法，已经落了三颗白子，这时进行拦截，收益更大
-                                machineScore[i][j] += 2200
+                                machineScore[i][j] += 2100
                             } else if (Chees.machineWin[k] === 4) {
                                 // 这时，第k中赢法，已经落了四颗白子，这时进行拦截，收益更大
                                 machineScore[i][j] += 20000
